@@ -1,0 +1,8 @@
+// Create a 'whitelist.json' file in the root folder with a list like the example below containing the IDs of all bot accounts you do *not* want to get banned.
+[
+    12345678902468,
+    12345678902468,
+    12345678902468,
+    12345678902468,
+    12345678902468
+]

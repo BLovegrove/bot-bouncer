@@ -1,0 +1,29 @@
+import datetime as dt
+import zoneinfo
+import discord
+from discord.ext import tasks, commands
+from loguru import logger
+
+from util import models, cfg
+
+
+class ExampleTask(commands.Cog):
+    def __init__(self, bot: models.BouncerBot):
+        self.task.start()
+        self.bot = bot
+
+    @tasks.loop(
+        time=dt.time(
+            hour=0, minute=0, second=0, tzinfo=zoneinfo.ZoneInfo("<timezone_code_here>")
+        )
+    )
+    async def task(self):
+        await self.timed_command_name()
+
+    async def timed_command_name(self, itr: discord.Interaction = None):
+        # run stuff here
+        await self.bot.get_channel(1234567890).send(content="test message here")
+
+
+async def setup(bot):
+    await bot.add_cog(ExampleTask(bot))
